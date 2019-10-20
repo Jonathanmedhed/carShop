@@ -1,0 +1,317 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section id="moto-showcase" class="moto-showcase-search text-white py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <form action="search.html">
+                    <!-- Form Row 2 -->
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Make</label>
+                            <select name="state" class="form-control">
+                                <option selected="true" disabled="disabled">Make</option>
+                                <option value="AL">Ford</option>
+                                <option value="AK">Alaska</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Model</label>
+                            <select name="bedrooms" class="form-control">
+                                <option selected="true" disabled="disabled">Model</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Min CC</label>
+                            <select name="state" class="form-control">
+                                <option selected="true" disabled="disabled">Min CC</option>
+                                <option value="AL">Ford</option>
+                                <option value="AK">Alaska</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Max CC</label>
+                            <select name="bedrooms" class="form-control">
+                                <option selected="true" disabled="disabled">Max CC</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Min Year</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Max Year</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Min Price</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Max Price</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Body Type</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Colour</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+                </form>
+            </div>
+        </div>
+        <div class="container">
+        <h3 class="text-center mb-3">Spotlight</h3>
+        <div class="row row-content">
+            <div class="col">
+                <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel" data-slide-to="1"></li>
+                        <li data-target="#mycarousel" data-slide-to="2"></li>
+                    </ol>
+                    <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+</section>
+{% endblock %}
