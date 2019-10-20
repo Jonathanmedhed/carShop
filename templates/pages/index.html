@@ -1,139 +1,384 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block content %}
 <!-- Listings -->
-<section id="listings" class="py-1">
+<section id="showcase" class="py-1">
     <div class="container">
         <h3 class="text-center mb-3">Spotlight</h3>
-        <div class="row">
-            <!-- Listing 1 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <img class="card-img-top" src="assets/img/homes/home-1.jpg" alt="">
-                    <div class="card-img-overlay">
-                        <h2>
-                            <span class="badge badge-secondary text-white">$490,000</span>
-                        </h2>
+        <div class="row row-content">
+            <div class="col">
+                <div id="mycarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">45 Drivewood Circle</h4>
-                            <p>
-                                <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
-                        </div>
-                        <hr>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-th-large"></i> Sqft: 2500</div>
-                            <div class="col-6">
-                                <i class="fas fa-car"></i> Garage: 2</div>
-                        </div>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-bed"></i> Bedrooms: 3</div>
-                            <div class="col-6">
-                                <i class="fas fa-bath"></i> Bathrooms: 2</div>
-                        </div>
-                        <hr>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-user"></i> Kyle Brown</div>
-                        </div>
-                        <div class="row text-secondary pb-2">
-                            <div class="col-6">
-                                <i class="fas fa-clock"></i> 5 days ago</div>
-                        </div>
-                        <hr>
-                        <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-                    </div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel" data-slide-to="1"></li>
+                        <li data-target="#mycarousel" data-slide-to="2"></li>
+                    </ol>
+                    <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="container">
+        <h3 class="text-center mb-3">Spotlight</h3>
+        <div class="row row-content">
+            <div class="col">
+                <div id="mycarousel1" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner" role="listbox">
+                        <div class="carousel-item active">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">moto <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
 
-            <!-- Listing 2 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <img class="card-img-top" src="assets/img/homes/home-2.jpg" alt="">
-                    <div class="card-img-overlay">
-                        <h2>
-                            <span class="badge badge-secondary text-white">$550,000</span>
-                        </h2>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                    <div class="carousel-item-subitem col-md-2">
+                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
+                                            alt="uthappizza">
+                                        <div class="carousel-item-subitem-caption">
+                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
+                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">18 Jefferson Lane</h4>
-                            <p>
-                                <i class="fas fa-map-marker text-secondary"></i> Woburn MA, 01801</p>
-                        </div>
-                        <hr>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-th-large"></i> Sqft: 3200</div>
-                            <div class="col-6">
-                                <i class="fas fa-car"></i> Garage: 1</div>
-                        </div>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-bed"></i> Bedrooms: 4</div>
-                            <div class="col-6">
-                                <i class="fas fa-bath"></i> Bathrooms: 2.5</div>
-                        </div>
-                        <hr>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-user"></i> Mark Hudson</div>
-                        </div>
-                        <div class="row text-secondary pb-2">
-                            <div class="col-6">
-                                <i class="fas fa-clock"></i> 5 days ago</div>
-                        </div>
-                        <hr>
-                        <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-                    </div>
+                    <ol class="carousel-indicators">
+                        <li data-target="#mycarousel1" data-slide-to="0" class="active"></li>
+                        <li data-target="#mycarousel1" data-slide-to="1"></li>
+                        <li data-target="#mycarousel1" data-slide-to="2"></li>
+                    </ol>
+                    <a class="carousel-control-prev" href="#mycarousel1" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#mycarousel1" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                    <button class="btn btn-danger btn-sm" id="carouselButton">
+                        <span class="fa fa-pause"></span>
+                    </button>
                 </div>
             </div>
-
-            <!-- Listing 3 -->
-            <div class="col-md-6 col-lg-4 mb-4">
-                <div class="card listing-preview">
-                    <img class="card-img-top" src="assets/img/homes/home-3.jpg" alt="">
-                    <div class="card-img-overlay">
-                        <h2>
-                            <span class="badge badge-secondary text-white">$580,000</span>
-                        </h2>
-                    </div>
-                    <div class="card-body">
-                        <div class="listing-heading text-center">
-                            <h4 class="text-primary">187 Woodrow Street</h4>
-                            <p>
-                                <i class="fas fa-map-marker text-secondary"></i> Salem MA, 01915</p>
-                        </div>
-                        <hr>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-th-large"></i> Sqft: 3107</div>
-                            <div class="col-6">
-                                <i class="fas fa-car"></i> Garage: 0</div>
-                        </div>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-bed"></i> Bedrooms: 4</div>
-                            <div class="col-6">
-                                <i class="fas fa-bath"></i> Bathrooms: 3</div>
-                        </div>
-                        <hr>
-                        <div class="row py-2 text-secondary">
-                            <div class="col-6">
-                                <i class="fas fa-user"></i> Mark Hudson</div>
-                        </div>
-                        <div class="row text-secondary pb-2">
-                            <div class="col-6">
-                                <i class="fas fa-clock"></i> 5 days ago</div>
-                        </div>
-                        <hr>
-                        <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 </section>
@@ -142,28 +387,28 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-md-4">
-                <i class="fas fa-comment fa-4x mr-4"></i>
+                <i class="fas fa-certificate fa-4x mr-4"></i>
                 <hr>
-                <h3>Consulting Services</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae,
-                    provident iste consequatur
-                    hic dignissimos ratione ea quae.</p>
+                <h3>Vehicle Appraisal</h3>
+                <p>Our experts and Technicians will have a extensive look at a vehicle to determine
+                    the appropriate market value of it
+                </p>
             </div>
             <div class="col-md-4">
                 <i class="fas fa-home fa-4x mr-4"></i>
                 <hr>
-                <h3>Propery Management</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae,
-                    provident iste consequatur
-                    hic dignissimos ratione ea quae.</p>
+                <h3>Dealerships</h3>
+                <p>Are you a car dealer? here at Car Shop we can work hand in hand to increase
+                    your sales. Contact us to find more about our deals.
+                </p>
             </div>
             <div class="col-md-4">
                 <i class="fas fa-suitcase fa-4x mr-4"></i>
                 <hr>
-                <h3>Renting & Selling</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, debitis nam! Repudiandae,
-                    provident iste consequatur
-                    hic dignissimos ratione ea quae.</p>
+                <h3>Join the team!</h3>
+                <p>Passionate about motorized vehicles? Here at Car Shop we are always looking
+                    for experts that would help us become the number 1 car dealer website in Ireland
+                </p>
             </div>
         </div>
     </div>

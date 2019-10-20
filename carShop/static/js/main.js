@@ -20,3 +20,19 @@ $(document).ready(function () {
         }
     });
 });
+
+$(document).ready(function () {
+    $('#mycarousel1').carousel({ interval: 2000 });
+    $('#carouselButton1').click(function () {
+        if ($('#carouselButton1').children('span').hasClass('fa-pause')) {
+            $('#mycarousel1').carousel('pause');
+            $('#carouselButton1').children('span').removeClass('fa-pause');
+            $('#carouselButton1').children('span').addClass('fa-play');
+        }
+        else {
+            $('#mycarousel1').carousel('cycle');
+            $('#carouselButton1').children('span').removeClass('fa-play');
+            $('#carouselButton1').children('span').addClass('fa-pause');
+        }
+    });
+});
