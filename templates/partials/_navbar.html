@@ -22,11 +22,19 @@
                 </li>
                 <li {% if '/listings/search_car' == request.path %} class="nav-item active mr-3" {% else %}
                     class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'search_car' %}">Find a Car</a>
+                    <a class="nav-link" href="{% url 'search_car' %}">Find Car</a>
                 </li>
                 <li {% if '/listings/search_moto' == request.path %} class="nav-item active mr-3" {% else %}
                     class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'search_moto' %}">Find a Motorcycle</a>
+                    <a class="nav-link" href="{% url 'search_moto' %}">Find Motorcycle</a>
+                </li>
+                <li {% if '/listings/car' == request.path %} class="nav-item active mr-3" {% else %}
+                    class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link" href="{% url 'car' %}">Sell Car</a>
+                </li>
+                <li {% if '/listings/moto' == request.path %} class="nav-item active mr-3" {% else %}
+                    class="nav-item mr-3" {% endif %}>
+                    <a class="nav-link" href="{% url 'moto' %}">Sell Motorcycle</a>
                 </li>
             </ul>
 

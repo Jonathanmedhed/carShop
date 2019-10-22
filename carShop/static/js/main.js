@@ -1,10 +1,18 @@
 const date = new Date();
 document.querySelector('.year').innerHTML = date.getFullYear();
 
+//Fade out timer for messages
 setTimeout(function () {
     $('#message').fadeOut('slow')
 }, 3000);
 
+//Show uploaded file path
+$(".custom-file-input").on("change", function() {
+  var fileName = $(this).val().split("\\").pop();
+  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+});
+
+//Carousel functionality
 $(document).ready(function () {
     $('#mycarousel').carousel({ interval: 2000 });
     $('#carouselButton').click(function () {

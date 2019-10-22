@@ -1,4 +1,170 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Moto</h1>
+<section id="moto-showcase" class="moto-showcase-search text-white py-5">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-12">
+                <form action="search.html">
+                    <!-- Form Row 2 -->
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Make</label>
+                            <select name="state" class="form-control">
+                                <option selected="true" disabled="disabled">Make</option>
+                                <option value="AL">Ford</option>
+                                <option value="AK">Alaska</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Model</label>
+                            <select name="bedrooms" class="form-control">
+                                <option selected="true" disabled="disabled">Model</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">CC's</label>
+                            <select name="bedrooms" class="form-control">
+                                <option selected="true" disabled="disabled">CC's</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Year</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Price</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Body Type</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Colour</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">Millage</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="price" class="form-control">
+                                <option selected="true" disabled="disabled">City</option>
+                                <option value="100000">$100,000</option>
+                                <option value="200000">$200,000</option>
+                                <option value="300000">$300,000</option>
+                                <option value="400000">$400,000</option>
+                                <option value="1000000">$1M+</option>
+                            </select>
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <textarea name="message" class="form-control">Description: </textarea>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <form>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Front Picture</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <form>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Back Picture</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <form>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Left Picture</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <form>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Right Picture</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <form>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Extra Picture(Optional)</label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <form>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="customFile">
+                                    <label class="custom-file-label" for="customFile">Extra Picture(Optional)</label>
+                                </div>
+                            </form>
+                        </div>
+
+                    </div>
+                    <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</section>
 {% endblock %}

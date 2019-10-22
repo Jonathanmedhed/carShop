@@ -188,6 +188,96 @@ img {
   }
 }
 
+#login-showcase {
+  background: url(../img/moto1.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  min-height: 650px;
+  padding-top: 6rem;
+}
+
+#login-showcase-login {
+  background: url(../img/moto1.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  min-height: 480px;
+  padding-top: 6rem;
+}
+
+#login-showcase .home-search {
+  min-height: 400px;
+  position: relative;
+  border-radius: 5px;
+}
+
+#login-showcase .overlay {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 400px;
+  width: 100%;
+  background: rgba(51, 51, 51, 0.8);
+}
+
+#login-showcase-inner {
+  background: url(../img/moto1.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  overflow: hidden;
+  min-height: 200px;
+}
+
+#login-showcase-inner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 100%;
+  width: 100%;
+  background: rgba(32, 134, 107, 0.8);
+}
+
+#login-showcase-inner.showcase-search {
+  min-height: 270px;
+}
+
+@media (max-width: 991px) {
+  #login-showcase {
+    padding-top: 4rem;
+  }
+  #login-showcase h1 {
+    font-size: 40px;
+  }
+  .hide-md-down {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  #login-showcase {
+    padding-top: 3rem;
+  }
+  #login-showcase h1 {
+    font-size: 40px;
+  }
+  #login-showcase p {
+    display: none;
+  }
+  #top-bar {
+    text-align: center;
+  }
+  #top-bar .social {
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 576px) {
+  #login-showcase h1 {
+    font-size: 30px;
+  }
+  #login-showcase-inner h1 {
+    font-size: 40px;
+  }
+}
+
 #services {
   background: url(../img/building.jpg) no-repeat top center fixed/cover;
   min-height: 300px;
