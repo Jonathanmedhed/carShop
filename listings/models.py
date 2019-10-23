@@ -11,10 +11,10 @@ class Listing(models.Model):
     year = models.CharField(max_length=4)
     millage = models.CharField(max_length=100)
     colour = models.CharField(max_length=100)
-    body = models.TextField(max_length=100)
-    city = models.TextField(max_length=100)
+    body = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
     price = models.IntegerField()
-    cc = models.IntegerField(blank=True)
+    cc = models.IntegerField(blank=True, null=True)
     description = models.TextField(blank=True)  # can be empty
     # upload to media folder with date
     photo_front = models.ImageField(upload_to='photos/%Y/%m/%d/')
