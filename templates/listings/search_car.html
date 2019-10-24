@@ -26,78 +26,111 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="sr-only">Model</label>
-                            <select name="model" class="form-control">
-                                <option selected="true" disabled="disabled">Model</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
+                            <input name="model" class="form-control" placeholder="Model">
                         </div>
                         <div class="col-md-6 mb-3">
                             <select name="minyear" class="form-control">
                                 <option selected="true" disabled="disabled">Min Year</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in year_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.minyear %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <select name="maxyear" class="form-control">
                                 <option selected="true" disabled="disabled">Max Year</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in year_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.maxyear %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="minmillage" class="form-control">
+                                <option selected="true" disabled="disabled">Min Millage</option>
+                                <!--Get choices from view-->
+                                {% for key,value in millage_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.minmillage %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="maxmillage" class="form-control">
+                                <option selected="true" disabled="disabled">Max Millage</option>
+                                <!--Get choices from view-->
+                                {% for key,value in millage_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.maxmillage %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <select name="minprice" class="form-control">
                                 <option selected="true" disabled="disabled">Min Price</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in price_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.minprice %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <select name="maxprice" class="form-control">
                                 <option selected="true" disabled="disabled">Max Price</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in price_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.maxprice %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <select name="body" class="form-control">
-                                <option selected="true" disabled="disabled">Body Type</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <option selected="true" disabled="disabled">Body</option>
+                                <!--Get choices from view-->
+                                {% for key,value in body_types.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.body %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <select name="colour" class="form-control">
                                 <option selected="true" disabled="disabled">Colour</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in colours.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.colour %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="city" class="form-control">
+                                <option selected="true" disabled="disabled">City</option>
+                                <!--Get choices from view-->
+                                {% for key,value in cities.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.city %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                     </div>
@@ -301,6 +334,7 @@
             <div class="row">
                 {% if listings %}
                 {% for listing in listings %}
+                {% if listing.cc == null %}
                 <!-- Listing -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card listing-preview">
@@ -349,7 +383,10 @@
                         </div>
                     </div>
                 </div>
+                {% endif %}
                 {% endfor %}
+                {% else %}
+                <h1>No Listing found with those specs</h1>
                 {% endif %}
             </div>
         </div>
