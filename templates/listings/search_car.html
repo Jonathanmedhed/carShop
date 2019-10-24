@@ -2,25 +2,31 @@
 
 {% load static %}
 
+{% load humanize %}
+
 {% block content %}
 <section id="showcase" class="showcase-search text-white py-5">
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
-                <form action="search.html">
+                <form action="{% url 'search_car' %}">
                     <!-- Form Row 2 -->
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label class="sr-only">Make</label>
-                            <select name="state" class="form-control">
+                            <select name="make" class="form-control">
                                 <option selected="true" disabled="disabled">Make</option>
-                                <option value="AL">Ford</option>
-                                <option value="AK">Alaska</option>
+                                <!--Get choices from view-->
+                                {% for key,value in car_make_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.make %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="sr-only">Model</label>
-                            <select name="bedrooms" class="form-control">
+                            <select name="model" class="form-control">
                                 <option selected="true" disabled="disabled">Model</option>
                                 <option>1</option>
                                 <option>2</option>
@@ -35,7 +41,7 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="minyear" class="form-control">
                                 <option selected="true" disabled="disabled">Min Year</option>
                                 <option value="100000">$100,000</option>
                                 <option value="200000">$200,000</option>
@@ -45,7 +51,7 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="maxyear" class="form-control">
                                 <option selected="true" disabled="disabled">Max Year</option>
                                 <option value="100000">$100,000</option>
                                 <option value="200000">$200,000</option>
@@ -55,7 +61,7 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="minprice" class="form-control">
                                 <option selected="true" disabled="disabled">Min Price</option>
                                 <option value="100000">$100,000</option>
                                 <option value="200000">$200,000</option>
@@ -65,7 +71,7 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="maxprice" class="form-control">
                                 <option selected="true" disabled="disabled">Max Price</option>
                                 <option value="100000">$100,000</option>
                                 <option value="200000">$200,000</option>
@@ -75,7 +81,7 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="body" class="form-control">
                                 <option selected="true" disabled="disabled">Body Type</option>
                                 <option value="100000">$100,000</option>
                                 <option value="200000">$200,000</option>
@@ -85,7 +91,7 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="colour" class="form-control">
                                 <option selected="true" disabled="disabled">Colour</option>
                                 <option value="100000">$100,000</option>
                                 <option value="200000">$200,000</option>
@@ -293,300 +299,58 @@
     <section id="listings" class="py-4">
         <div class="container">
             <div class="row">
-
-                <!-- Listing 1 -->
+                {% if listings %}
+                {% for listing in listings %}
+                <!-- Listing -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card listing-preview">
-                        <img class="card-img-top" src="{% static '/img/car1.jpg' %}" alt="">
+                        <img class="card-img-top" src="{{ listing.photo_front.url }}" alt="">
                         <div class="card-img-overlay">
                             <h2>
-                                <span class="badge badge-secondary text-white">$490,000</span>
+                                <span class="badge badge-secondary text-white">${{ listing.price | intcomma}}</span>
                             </h2>
                         </div>
                         <div class="card-body">
                             <div class="listing-heading text-center">
-                                <h4 class="text-primary">45 Drivewood Circle</h4>
+                                <h4 class="text-primary">{{ listing.make }} {{ listing.model }}</h4>
                                 <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
+                                    <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }}</p>
                             </div>
                             <hr>
                             <div class="row py-2 text-secondary">
                                 <div class="col-6">
-                                    <i class="fas fa-tag"></i> Make: Ford</div>
+                                    <i class="fas fa-tag"></i> Make: {{ listing.make }}</div>
                                 <div class="col-6">
-                                    <i class="fas fa-car"></i> Model: Mustang</div>
+                                    <i class="fas fa-car"></i> Model: {{ listing.model }}</div>
                             </div>
                             <div class="row py-2 text-secondary">
                                 <div class="col-6">
-                                    <i class="fas fa-calendar"></i> Year: 64</div>
+                                    <i class="fas fa-calendar"></i> Year: {{ listing.year }}</div>
                                 <div class="col-6">
-                                    <i class="fas fa-male"></i> Body Type: Car</div>
+                                    <i class="fas fa-male"></i> Body Type: {{ listing.body }}</div>
                             </div>
                             <div class="row py-2 text-secondary">
                                 <div class="col-6">
-                                    <i class="fas fa-paint-brush"></i> Colour: Red</div>
+                                    <i class="fas fa-paint-brush"></i> Colour: {{ listing.colour }}</div>
                                 <div class="col-6">
-                                    <i class="fas fa-hourglass-half"></i> Millage: 10000km</div>
+                                    <i class="fas fa-hourglass-half"></i> Millage: {{ listing.millage }}</div>
                             </div>
                             <hr>
                             <div class="row py-2 text-secondary">
                                 <div class="col-12">
-                                    <i class="fas fa-user"></i> Kyle Brown</div>
+                                    <i class="fas fa-user"></i> {{ listing.user }}</div>
                             </div>
                             <div class="row text-secondary pb-2">
                                 <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago</div>
+                                    <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
                             </div>
                             <hr>
-                            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
+                            <a href="" class="btn btn-primary btn-block">More Info</a>
                         </div>
                     </div>
                 </div>
-
-                <!-- Listing 1 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="{% static '/img/car1.jpg' %}" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary text-white">$490,000</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">45 Drivewood Circle</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-tag"></i> Make: Ford</div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Model: Mustang</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-calendar"></i> Year: 64</div>
-                                <div class="col-6">
-                                    <i class="fas fa-male"></i> Body Type: Car</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-paint-brush"></i> Colour: Red</div>
-                                <div class="col-6">
-                                    <i class="fas fa-hourglass-half"></i> Millage: 10000km</div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-12">
-                                    <i class="fas fa-user"></i> Kyle Brown</div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago</div>
-                            </div>
-                            <hr>
-                            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Listing 1 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="{% static '/img/car1.jpg' %}" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary text-white">$490,000</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">45 Drivewood Circle</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-tag"></i> Make: Ford</div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Model: Mustang</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-calendar"></i> Year: 64</div>
-                                <div class="col-6">
-                                    <i class="fas fa-male"></i> Body Type: Car</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-paint-brush"></i> Colour: Red</div>
-                                <div class="col-6">
-                                    <i class="fas fa-hourglass-half"></i> Millage: 10000km</div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-12">
-                                    <i class="fas fa-user"></i> Kyle Brown</div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago</div>
-                            </div>
-                            <hr>
-                            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Listing 1 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="{% static '/img/car1.jpg' %}" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary text-white">$490,000</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">45 Drivewood Circle</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-tag"></i> Make: Ford</div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Model: Mustang</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-calendar"></i> Year: 64</div>
-                                <div class="col-6">
-                                    <i class="fas fa-male"></i> Body Type: Car</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-paint-brush"></i> Colour: Red</div>
-                                <div class="col-6">
-                                    <i class="fas fa-hourglass-half"></i> Millage: 10000km</div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-12">
-                                    <i class="fas fa-user"></i> Kyle Brown</div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago</div>
-                            </div>
-                            <hr>
-                            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Listing 1 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="{% static '/img/car1.jpg' %}" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary text-white">$490,000</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">45 Drivewood Circle</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-tag"></i> Make: Ford</div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Model: Mustang</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-calendar"></i> Year: 64</div>
-                                <div class="col-6">
-                                    <i class="fas fa-male"></i> Body Type: Car</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-paint-brush"></i> Colour: Red</div>
-                                <div class="col-6">
-                                    <i class="fas fa-hourglass-half"></i> Millage: 10000km</div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-12">
-                                    <i class="fas fa-user"></i> Kyle Brown</div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago</div>
-                            </div>
-                            <hr>
-                            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Listing 1 -->
-                <div class="col-md-6 col-lg-4 mb-4">
-                    <div class="card listing-preview">
-                        <img class="card-img-top" src="{% static '/img/car1.jpg' %}" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary text-white">$490,000</span>
-                            </h2>
-                        </div>
-                        <div class="card-body">
-                            <div class="listing-heading text-center">
-                                <h4 class="text-primary">45 Drivewood Circle</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> Norwood MA, 02062</p>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-tag"></i> Make: Ford</div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Model: Mustang</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-calendar"></i> Year: 64</div>
-                                <div class="col-6">
-                                    <i class="fas fa-male"></i> Body Type: Car</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-paint-brush"></i> Colour: Red</div>
-                                <div class="col-6">
-                                    <i class="fas fa-hourglass-half"></i> Millage: 10000km</div>
-                            </div>
-                            <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-12">
-                                    <i class="fas fa-user"></i> Kyle Brown</div>
-                            </div>
-                            <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> 2 days ago</div>
-                            </div>
-                            <hr>
-                            <a href="listing.html" class="btn btn-primary btn-block">More Info</a>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+                {% endif %}
             </div>
         </div>
         </div>
