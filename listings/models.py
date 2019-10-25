@@ -24,6 +24,7 @@ class Listing(models.Model):
     photo_extra = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     photo_extra2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     is_published = models.BooleanField(default=True)
+    is_in_spotlight = models.BooleanField(default=False)
     list_date = models.DateTimeField(default=datetime.now, blank=True)
 
     def __str__(self):  # Main field to display

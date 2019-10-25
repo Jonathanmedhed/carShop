@@ -3,13 +3,13 @@ from .models import Listing
 
 class ListingAdmin(admin.ModelAdmin):
     #to displayinfo
-    list_display = ('id', 'make', 'model', 'is_published', 'price', 'list_date', 'user') 
+    list_display = ('id', 'make', 'model', 'is_published', 'price', 'is_in_spotlight', 'user') 
     #to make them clickable
     list_display_links = ('id', 'make', 'model') 
     #To add filters
     list_filter = ('make', 'model', 'is_published', 'price', 'list_date', 'user') 
     #Make a field editable
-    list_editable= ('is_published',)
+    list_editable= ('is_published', 'is_in_spotlight')
     #Add search field
     search_fields = ('make', 'model', 'is_published', 'price', 'list_date', 'user', 'city')
     #amount per page

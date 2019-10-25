@@ -335,30 +335,18 @@ img {
 }
 
 .carousel {
-  background: #512DA8;
+  background: white;
 }
 
 .carousel .carousel-item {
   height: 200px;
 }
 
-.carousel .carousel-item-subitem {
-  height: 200px;
-  position: relative;
-}
-
-.carousel .carousel-item-subitem-caption {
-  position: absolute;
-  left: 10px;
-  top: 10px;
-}
-
 .carousel .carousel-item img {
   position: absolute;
   top: 0;
   left: 0;
-  height: 200px;
-  width: 200px;
+  min-height: 300px;
 }
 
 #carouselButton {
