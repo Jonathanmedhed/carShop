@@ -335,7 +335,7 @@ img {
 }
 
 .carousel {
-  background: white;
+  background: none;
 }
 
 .carousel .carousel-item {
@@ -347,6 +347,7 @@ img {
   top: 0;
   left: 0;
   min-height: 300px;
+  padding: 1%;
 }
 
 #carouselButton {

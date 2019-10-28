@@ -4,381 +4,75 @@
 
 {% block content %}
 <!-- Listings -->
-<section id="showcase" class="py-1">
+<section id="showcase" class="showcase-search text-white py-3">
     <div class="container">
-        <h3 class="text-center mb-3">Spotlight</h3>
-        <div class="row row-content">
-            <div class="col">
-                <div id="mycarousel" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <h1 class="display-4 mb-4">
+                    Find The Perfect Vehicle For You!
+                </h1>
+                <form action="{% url 'search_car' %}">
+                    <!-- Form Row 2 -->
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <select id="type" name="type" class="form-control">
+                                <option selected="true" disabled="disabled">Type</option>
+                                <option value='1'>
+                                    Motorcycle
+                                </option>
+                                <option value='2'>
+                                    Car
+                                </option>
+                            </select>
                         </div>
-                        <div class="carousel-item">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Make</label>
+                            <select id="allmakes" name="make" class="form-control">
+                                <option selected="true" disabled="disabled">Make</option>
+                                <!--Get choices from view-->
+                                {% for key,value in car_make_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='2' value="{{ key }}" {% if key == values.make %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                                {% for key,value in moto_make_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='1' value="{{ key }}" {% if key == values.make %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
                         </div>
-                        <div class="carousel-item">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/car1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="sr-only">Model</label>
+                            <input name="model" class="form-control" placeholder="Model">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="maxyear" class="form-control">
+                                <option selected="true" disabled="disabled">Max Year</option>
+                                <!--Get choices from view-->
+                                {% for key,value in year_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.maxyear %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary btn-block mt-4" type="submit">More Motorcycle
+                                Options</button>
+                        </div>
+                        <div class="col-md-6">
+                            <button class="btn btn-secondary btn-block mt-4" type="submit">More Car Options</button>
                         </div>
                     </div>
-                    <ol class="carousel-indicators">
-                        <li data-target="#mycarousel" data-slide-to="0" class="active"></li>
-                        <li data-target="#mycarousel" data-slide-to="1"></li>
-                        <li data-target="#mycarousel" data-slide-to="2"></li>
-                    </ol>
-                    <a class="carousel-control-prev" href="#mycarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#mycarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-                    <button class="btn btn-danger btn-sm" id="carouselButton">
-                        <span class="fa fa-pause"></span>
-                    </button>
-                </div>
             </div>
-        </div>
-    </div>
-    <div class="container">
-        <h3 class="text-center mb-3">Spotlight</h3>
-        <div class="row row-content">
-            <div class="col">
-                <div id="mycarousel1" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner" role="listbox">
-                        <div class="carousel-item active">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">moto <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="carousel-item">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="carousel-item">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car1 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car2 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                    <div class="carousel-item-subitem col-md-2">
-                                        <img class="d-block img-fluid" src="{% static '/img/moto1.jpg' %}"
-                                            alt="uthappizza">
-                                        <div class="carousel-item-subitem-caption">
-                                            <h2 class="mt-0">Car3 <span class="badge badge-danger ">HOT</span>
-                                                <span class="badge badge-pill badge-secondary">$4.99</span></h2>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <ol class="carousel-indicators">
-                        <li data-target="#mycarousel1" data-slide-to="0" class="active"></li>
-                        <li data-target="#mycarousel1" data-slide-to="1"></li>
-                        <li data-target="#mycarousel1" data-slide-to="2"></li>
-                    </ol>
-                    <a class="carousel-control-prev" href="#mycarousel1" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon"></span>
-                    </a>
-                    <a class="carousel-control-next" href="#mycarousel1" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon"></span>
-                    </a>
-                    <button class="btn btn-danger btn-sm" id="carouselButton">
-                        <span class="fa fa-pause"></span>
-                    </button>
-                </div>
-            </div>
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
+            </form>
+            <!--Carousel-->
+            {% include 'partials/_carousel.html'%}
         </div>
     </div>
 </section>

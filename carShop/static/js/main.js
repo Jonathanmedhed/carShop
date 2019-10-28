@@ -7,10 +7,11 @@ setTimeout(function () {
 }, 3000);
 
 //Show uploaded file path
-$(".custom-file-input").on("change", function() {
-  var fileName = $(this).val().split("\\").pop();
-  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+$(".custom-file-input").on("change", function () {
+    var fileName = $(this).val().split("\\").pop();
+    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
 });
+
 
 //Carousel functionality
 $(document).ready(function () {
@@ -29,18 +30,19 @@ $(document).ready(function () {
     });
 });
 
-$(document).ready(function () {
-    $('#mycarousel1').carousel({ interval: 2000 });
-    $('#carouselButton1').click(function () {
-        if ($('#carouselButton1').children('span').hasClass('fa-pause')) {
-            $('#mycarousel1').carousel('pause');
-            $('#carouselButton1').children('span').removeClass('fa-pause');
-            $('#carouselButton1').children('span').addClass('fa-play');
-        }
-        else {
-            $('#mycarousel1').carousel('cycle');
-            $('#carouselButton1').children('span').removeClass('fa-play');
-            $('#carouselButton1').children('span').addClass('fa-pause');
+$('#type').on('change', function () {
+    var selected = $(this).val();
+    $("#allmakes option").each(function (item) {
+        console.log(selected);
+        var element = $(this);
+        console.log(element.data("tag"));
+        if (element.data("tag") != selected) {
+            element.hide();
+        } else {
+            element.show();
         }
     });
+
+    $("#allmakes").val($("#allmakes option:visible:first").val());
+
 });
