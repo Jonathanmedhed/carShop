@@ -152,7 +152,7 @@
                 <!-- Listing -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card listing-preview">
-                        <img class="card-img-top" src="{{ listing.photo_front.url }}" alt="">
+                        <img class="card-img-top" src="{{ listing.photo_front.url }}">
                         <div class="card-img-overlay">
                             <h2>
                                 <span class="badge badge-secondary text-white">€{{ listing.price | intcomma}}</span>
@@ -193,7 +193,7 @@
                                     <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
                             </div>
                             <hr>
-                            <a href="" class="btn btn-primary btn-block">More Info</a>
+                            <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
                         </div>
                     </div>
                 </div>

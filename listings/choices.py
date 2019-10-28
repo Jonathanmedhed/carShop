@@ -84,6 +84,19 @@ body_types = {
     'VAN': 'VAN',
 }
 
+moto_body_types = {
+    'Adventure': 'Adventure',
+    'ATV': 'ATV',
+    'Chopper': 'Chopper',
+    'Cruiser': 'Cruiser',
+    'Cross': 'Cross',
+    'Naked': 'Naked',
+    'Scooter': 'Scooter',
+    'Sport': 'Sport',
+    'Street': 'Street',
+    'Touring': 'Touring',
+}
+
 colours = {
     'Azure': 'Azure',
     'Aquamarine': 'Aquamarine',

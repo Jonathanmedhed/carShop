@@ -1,170 +1,152 @@
 {% extends 'base.html' %}
+
+{% load static %}
+
 {% block content %}
-<section id="moto-showcase" class="moto-showcase-search text-white py-5">
+<section id="moto-showcase" class="showcase-search text-white py-5">
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
-                <form action="search.html">
+                <form action="{% url 'moto' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <!-- Form Row 2 -->
+                    {% if user.is_authenticated %}
+                    <input type="hidden" name="user_id" value="{{ user.id }}">
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <label class="sr-only">Make</label>
-                            <select name="state" class="form-control">
+                            <select name="make" class="form-control">
                                 <option selected="true" disabled="disabled">Make</option>
-                                <option value="AL">Ford</option>
-                                <option value="AK">Alaska</option>
+                                <!--Get choices from view-->
+                                {% for key,value in moto_make_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.make %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="sr-only">Model</label>
-                            <select name="bedrooms" class="form-control">
-                                <option selected="true" disabled="disabled">Model</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
+                            <input name="model" class="form-control" placeholder="Model">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <label class="sr-only">CC's</label>
-                            <select name="bedrooms" class="form-control">
-                                <option selected="true" disabled="disabled">CC's</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                            </select>
+                            <label class="sr-only">CC</label>
+                            <input name="cc" class="form-control" placeholder="CC">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="year" class="form-control">
                                 <option selected="true" disabled="disabled">Year</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in year_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.year %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <select name="price" class="form-control">
                                 <option selected="true" disabled="disabled">Price</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in price_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.price %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
-                                <option selected="true" disabled="disabled">Body Type</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                            <select name="body" class="form-control">
+                                <option selected="true" disabled="disabled">Body</option>
+                                <!--Get choices from view-->
+                                {% for key,value in moto_body_types.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.body %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="colour" class="form-control">
                                 <option selected="true" disabled="disabled">Colour</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in colours.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.colour %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="millage" class="form-control">
                                 <option selected="true" disabled="disabled">Millage</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in millage_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.millage %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="price" class="form-control">
+                            <select name="city" class="form-control">
                                 <option selected="true" disabled="disabled">City</option>
-                                <option value="100000">$100,000</option>
-                                <option value="200000">$200,000</option>
-                                <option value="300000">$300,000</option>
-                                <option value="400000">$400,000</option>
-                                <option value="1000000">$1M+</option>
+                                <!--Get choices from view-->
+                                {% for key,value in cities.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.city %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-12 mb-3">
-                            <textarea name="message" class="form-control">Description: </textarea>
+                            <textarea name="description" class="form-control">Description: </textarea>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <form>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Front Picture</label>
-                                </div>
-                            </form>
+                            <div class="custom-file">
+                                <input name="photo_front" type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Front Picture</label>
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <form>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Back Picture</label>
-                                </div>
-                            </form>
+                            <div class="custom-file">
+                                <input name="photo_back" type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Back Picture</label>
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <form>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Left Picture</label>
-                                </div>
-                            </form>
+                            <div class="custom-file">
+                                <input name="photo_left" type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Left Picture</label>
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <form>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Right Picture</label>
-                                </div>
-                            </form>
+                            <div class="custom-file">
+                                <input name="photo_right" type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Right Picture</label>
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <form>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Extra Picture(Optional)</label>
-                                </div>
-                            </form>
+                            <div class="custom-file">
+                                <input name="photo_extra" type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Extra Picture(Optional)</label>
+                            </div>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <form>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="customFile">
-                                    <label class="custom-file-label" for="customFile">Extra Picture(Optional)</label>
-                                </div>
-                            </form>
+                            <div class="custom-file">
+                                <input name="photo_extra2" type="file" class="custom-file-input" id="customFile">
+                                <label class="custom-file-label" for="customFile">Extra Picture(Optional)</label>
+                            </div>
                         </div>
-
                     </div>
-                    <button class="btn btn-secondary btn-block mt-4" type="submit">Submit form</button>
+                    <input type="submit" value="Submit" class="btn btn-block btn-secondary">
+                    {% endif %}
                 </form>
             </div>
         </div>
     </div>
-
 </section>
 {% endblock %}

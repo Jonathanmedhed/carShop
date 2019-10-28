@@ -1,4 +1,39 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Dashboard</h1>
+<section id="dashboard" class="py-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                {% if user.is_authenticated %}
+                <h2>Welcome {{ user.username }}</h2>
+                <p>Here are the vehicles you have for sale</p>
+                {% if listings %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Vehicle</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for listing in listings %}
+                        {% if listing.user == user %}
+                        <tr>
+                            <td>{{listing.id}}</td>
+                            <td>{{listing.make}} {{listing.model}}</td>
+                            <td>
+                                <a class="btn btn-light" href="{% url 'listing' listing.id %}">View Listing</a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

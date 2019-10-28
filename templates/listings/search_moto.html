@@ -17,7 +17,7 @@
                             <select name="make" class="form-control">
                                 <option selected="true" disabled="disabled">Make</option>
                                 <!--Get choices from view-->
-                                {% for key,value in car_make_choices.items %}
+                                {% for key,value in moto_make_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
                                 <option value="{{ key }}" {% if key == values.make %} selected {% endif %}>{{ value }}
                                 </option>
@@ -53,29 +53,29 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                                <select name="mincc" class="form-control">
-                                    <option selected="true" disabled="disabled">Min cc</option>
-                                    <!--Get choices from view-->
-                                    {% for key,value in cc_choices.items %}
-                                    <!--If make is in the values searched, stay selected-->
-                                    <option value="{{ key }}" {% if key == values.mincc %} selected {% endif %}>
-                                        {{ value }}
-                                    </option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                            <div class="col-md-6 mb-3">
-                                <select name="maxcc" class="form-control">
-                                    <option selected="true" disabled="disabled">Max cc</option>
-                                    <!--Get choices from view-->
-                                    {% for key,value in cc_choices.items %}
-                                    <!--If make is in the values searched, stay selected-->
-                                    <option value="{{ key }}" {% if key == values.maxcc %} selected {% endif %}>
-                                        {{ value }}
-                                    </option>
-                                    {% endfor %}
-                                </select>
-                            </div>
+                            <select name="mincc" class="form-control">
+                                <option selected="true" disabled="disabled">Min cc</option>
+                                <!--Get choices from view-->
+                                {% for key,value in cc_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.mincc %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="maxcc" class="form-control">
+                                <option selected="true" disabled="disabled">Max cc</option>
+                                <!--Get choices from view-->
+                                {% for key,value in cc_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.maxcc %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
                         <div class="col-md-6 mb-3">
                             <select name="minmillage" class="form-control">
                                 <option selected="true" disabled="disabled">Min Millage</option>
@@ -128,7 +128,7 @@
                             <select name="body" class="form-control">
                                 <option selected="true" disabled="disabled">Body</option>
                                 <!--Get choices from view-->
-                                {% for key,value in body_types.items %}
+                                {% for key,value in moto_body_types.items %}
                                 <!--If make is in the values searched, stay selected-->
                                 <option value="{{ key }}" {% if key == values.body %} selected {% endif %}>{{ value }}
                                 </option>

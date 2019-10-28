@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Listing
-from .choices import car_make_choices, moto_make_choices, body_types, colours, cities, price_choices, millage_choices, year_choices, cc_choices
+from .choices import car_make_choices, moto_make_choices, body_types, moto_body_types, colours, cities, price_choices, millage_choices, year_choices, cc_choices
+from django.core.files.storage import FileSystemStorage
 
 
 def carousel(request):
@@ -11,19 +12,112 @@ def carousel(request):
     }
     return render(request, 'templates/partials/_carousel.html', context)
 
+def listing(request, listing_id):
+    
+    listing = get_object_or_404(Listing, pk=listing_id)
+
+    context = {
+        'listing': listing
+    }
+    return render(request, 'listings/listing.html', context)
+
 
 def car(request):
-    listings = Listing.objects.all()
+    if request.method == 'POST':
+        fs = FileSystemStorage()
+        # Get form values
+        user_id = request.POST['user_id']
+        make = request.POST['make']
+        model = request.POST['model']
+        year = request.POST['year']
+        body = request.POST['body']
+        colour = request.POST['colour']
+        price = request.POST['price']
+        millage = request.POST['millage']
+        city = request.POST['city']
+        description = request.POST['description']
+        photo_front = request.FILES['photo_front']
+        photo_front_name = fs.save(photo_front.name, photo_front)
+        photo_back = request.FILES['photo_back']
+        photo_back_name = fs.save(photo_back.name, photo_back)
+        photo_left = request.FILES['photo_left']
+        photo_left_name = fs.save(photo_left.name, photo_left)
+        photo_right = request.FILES['photo_right']
+        photo_right_name = fs.save(photo_right.name, photo_right)
+        photo_extra = request.FILES['photo_extra']
+        photo_extra_name = fs.save(photo_extra.name, photo_extra)
+        photo_extra2 = request.FILES['photo_extra2']
+        photo_extra2_name = fs.save(photo_extra2.name, photo_extra2)
+
+        listing = Listing(user_id=user_id, make=make, model=model, year=year, body=body, colour=colour, price=price,
+                          millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                          photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, photo_extra2=photo_extra2_name)
+        listing.save()
+        return redirect('dashboard')
+    else:
+        listings = Listing.objects.all()
     context = {
-        'listings': listings
+        'car_make_choices': car_make_choices,
+        'moto_make_choices': moto_make_choices,
+        'body_types': body_types,
+        'moto_body_types': moto_body_types,
+        'colours': colours,
+        'cities': cities,
+        'price_choices': price_choices,
+        'millage_choices': millage_choices,
+        'year_choices': year_choices,
+        'values': request.GET
     }
     return render(request, 'listings/car.html', context)
 
 
 def moto(request):
-    listings = Listing.objects.all()
+    if request.method == 'POST':
+        fs = FileSystemStorage()
+        # Get form values
+        user_id = request.POST['user_id']
+        make = request.POST['make']
+        model = request.POST['model']
+        year = request.POST['year']
+        cc = request.POST['cc']
+        body = request.POST['body']
+        colour = request.POST['colour']
+        price = request.POST['price']
+        millage = request.POST['millage']
+        city = request.POST['city']
+        description = request.POST['description']
+        photo_front = request.FILES['photo_front']
+        photo_front_name = fs.save(photo_front.name, photo_front)
+        photo_back = request.FILES['photo_back']
+        photo_back_name = fs.save(photo_back.name, photo_back)
+        photo_left = request.FILES['photo_left']
+        photo_left_name = fs.save(photo_left.name, photo_left)
+        photo_right = request.FILES['photo_right']
+        photo_right_name = fs.save(photo_right.name, photo_right)
+        photo_extra = request.FILES['photo_extra']
+        photo_extra_name = fs.save(photo_extra.name, photo_extra)
+        photo_extra2 = request.FILES['photo_extra2']
+        photo_extra2_name = fs.save(photo_extra2.name, photo_extra2)
+
+        listing = Listing(user_id=user_id, make=make, model=model, cc=cc,year=year, body=body, colour=colour, price=price,
+                          millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                          photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, photo_extra2=photo_extra2_name)
+        listing.save()
+        return redirect('dashboard')
+    else:
+        listings = Listing.objects.all()
     context = {
-        'listings': listings
+        'car_make_choices': car_make_choices,
+        'moto_make_choices': moto_make_choices,
+        'body_types': body_types,
+        'moto_body_types': moto_body_types,
+        'colours': colours,
+        'cc_choices': cc_choices,
+        'cities': cities,
+        'price_choices': price_choices,
+        'millage_choices': millage_choices,
+        'year_choices': year_choices,
+        'values': request.GET
     }
     return render(request, 'listings/moto.html', context)
 
@@ -143,6 +237,7 @@ def search_moto(request):
         'car_make_choices': car_make_choices,
         'moto_make_choices': moto_make_choices,
         'body_types': body_types,
+        'moto_body_types': moto_body_types,
         'colours': colours,
         'cities': cities,
         'price_choices': price_choices,
@@ -253,6 +348,7 @@ def search_car(request):
         'car_make_choices': car_make_choices,
         'moto_make_choices': moto_make_choices,
         'body_types': body_types,
+        'moto_body_types': moto_body_types,
         'colours': colours,
         'cities': cities,
         'price_choices': price_choices,
