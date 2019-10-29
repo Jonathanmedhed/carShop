@@ -49,12 +49,12 @@
                             <input name="model" class="form-control" placeholder="Model">
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="maxyear" class="form-control">
-                                <option selected="true" disabled="disabled">Max Year</option>
+                            <select name="year" class="form-control">
+                                <option selected="true" disabled="disabled">Min Year</option>
                                 <!--Get choices from view-->
                                 {% for key,value in year_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.maxyear %} selected {% endif %}>
+                                <option value="{{ key }}" {% if key == values.year %} selected {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
@@ -68,9 +68,10 @@
                             <button class="btn btn-secondary btn-block mt-4" type="submit">More Car Options</button>
                         </div>
                     </div>
+                    <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
+                </form>
             </div>
-            <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
-            </form>
+
             <!--Carousel-->
             {% include 'partials/_carousel.html'%}
         </div>
