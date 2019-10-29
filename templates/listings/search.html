@@ -9,17 +9,65 @@
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
-                <form action="{% url 'search_moto' %}">
+                <form action="{% url 'search' %}">
                     <!-- Form Row 2 -->
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
-                            <label class="sr-only">Make</label>
-                            <select name="make" class="form-control">
+                            <select id="type" name="type" class="form-control">
+                                <option selected="true" disabled="disabled">Type</option>
+                                <option value='moto' {% if values.type == 'moto' %} selected
+                                {% endif %}>
+                                    Motorcycle
+                                </option>
+                                <option value='car' {% if values.type == 'car' %} selected
+                                {% endif %}>
+                                    Car
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select id="choices" name="body" class="form-control">
+                                <option selected="true" disabled="disabled">Body Type</option>
+                                <!--Get choices from view-->
+                                {% for key,value in body_types.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='car' value="{{ key }}" {% if key == values.body %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                                {% for key,value in moto_body_types.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.body %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="colour" class="form-control">
+                                <option selected="true" disabled="disabled">Colour</option>
+                                <!--Get choices from view-->
+                                {% for key,value in colours.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.colour %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select id="choices" name="make" class="form-control">
                                 <option selected="true" disabled="disabled">Make</option>
                                 <!--Get choices from view-->
+                                {% for key,value in car_make_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='car' value="{{ key }}" {% if key == values.make %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
                                 {% for key,value in moto_make_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.make %} selected {% endif %}>{{ value }}
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.make %} selected {% endif %}>
+                                    {{ value }}
                                 </option>
                                 {% endfor %}
                             </select>
@@ -27,6 +75,17 @@
                         <div class="col-md-6 mb-3">
                             <label class="sr-only">Model</label>
                             <input name="model" class="form-control" placeholder="Model">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <select name="city" class="form-control">
+                                <option selected="true" disabled="disabled">City</option>
+                                <!--Get choices from view-->
+                                {% for key,value in cities.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.city %} selected {% endif %}>{{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <select name="minyear" class="form-control">
@@ -53,24 +112,26 @@
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="mincc" class="form-control">
+                            <select id="choices" name="mincc" class="form-control">
                                 <option selected="true" disabled="disabled">Min cc</option>
                                 <!--Get choices from view-->
                                 {% for key,value in cc_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.mincc %} selected {% endif %}>
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.mincc %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
-                            <select name="maxcc" class="form-control">
+                            <select id="choices" name="maxcc" class="form-control">
                                 <option selected="true" disabled="disabled">Max cc</option>
                                 <!--Get choices from view-->
                                 {% for key,value in cc_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.maxcc %} selected {% endif %}>
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.maxcc %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
@@ -120,39 +181,6 @@
                                 <!--If make is in the values searched, stay selected-->
                                 <option value="{{ key }}" {% if key == values.maxprice %} selected {% endif %}>
                                     {{ value }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <select name="body" class="form-control">
-                                <option selected="true" disabled="disabled">Body</option>
-                                <!--Get choices from view-->
-                                {% for key,value in moto_body_types.items %}
-                                <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.body %} selected {% endif %}>{{ value }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <select name="colour" class="form-control">
-                                <option selected="true" disabled="disabled">Colour</option>
-                                <!--Get choices from view-->
-                                {% for key,value in colours.items %}
-                                <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.colour %} selected {% endif %}>{{ value }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <select name="city" class="form-control">
-                                <option selected="true" disabled="disabled">City</option>
-                                <!--Get choices from view-->
-                                {% for key,value in cities.items %}
-                                <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.city %} selected {% endif %}>{{ value }}
                                 </option>
                                 {% endfor %}
                             </select>

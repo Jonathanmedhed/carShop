@@ -32,10 +32,8 @@ $(document).ready(function () {
 
 $('#type').on('change', function () {
     var selected = $(this).val();
-    $("#allmakes option").each(function (item) {
-        console.log(selected);
+    $("#choices option").each(function (item) {
         var element = $(this);
-        console.log(element.data("tag"));
         if (element.data("tag") != selected) {
             element.hide();
         } else {
@@ -43,6 +41,6 @@ $('#type').on('change', function () {
         }
     });
 
-    $("#allmakes").val($("#allmakes option:visible:first").val());
+    $("#choices").val($("#choices option:visible:first").val());
 
 });

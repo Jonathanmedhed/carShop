@@ -20,13 +20,9 @@
                     {% endif %}>
                     <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
-                <li {% if '/listings/search_car' == request.path %} class="nav-item active mr-3" {% else %}
+                <li {% if '/listings/search' == request.path %} class="nav-item active mr-3" {% else %}
                     class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'search_car' %}">Find Car</a>
-                </li>
-                <li {% if '/listings/search_moto' == request.path %} class="nav-item active mr-3" {% else %}
-                    class="nav-item mr-3" {% endif %}>
-                    <a class="nav-link" href="{% url 'search_moto' %}">Find Motorcycle</a>
+                    <a class="nav-link" href="{% url 'search' %}">Find Vehicle</a>
                 </li>
                 <li {% if '/listings/car' == request.path %} class="nav-item active mr-3" {% else %}
                     class="nav-item mr-3" {% endif %}>

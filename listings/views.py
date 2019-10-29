@@ -122,9 +122,9 @@ def moto(request):
     return render(request, 'listings/moto.html', context)
 
 
-def search_moto(request):
+def search(request):
 
-    queryset_list = Listing.objects.order_by('-list_date').exclude(cc=None)
+    queryset_list = Listing.objects.order_by('-list_date')
 
     # make
     if 'make' in request.GET:
@@ -232,12 +232,20 @@ def search_moto(request):
         if maxcc:
             queryset_list = queryset_list.filter(
                 cc__lte=maxcc)
+    # type
+    if 'type' in request.GET:
+        type = request.GET['type']
+        if type == 'moto':
+            queryset_list = queryset_list.exclude(cc=None)
+        elif type == 'car':
+            queryset_list = queryset_list.filter(cc=None)
 
     context = {
         'car_make_choices': car_make_choices,
         'moto_make_choices': moto_make_choices,
         'body_types': body_types,
         'moto_body_types': moto_body_types,
+        'body_types': body_types,
         'colours': colours,
         'cities': cities,
         'price_choices': price_choices,
@@ -248,7 +256,7 @@ def search_moto(request):
         'values': request.GET  # to mantain search values in the fields after search
     }
 
-    return render(request, 'listings/search_moto.html', context)
+    return render(request, 'listings/search.html', context)
 
 
 def search_car(request):

@@ -11,34 +11,36 @@
                 <h1 class="display-4 mb-4">
                     Find The Perfect Vehicle For You!
                 </h1>
-                <form action="{% url 'search_car' %}">
+                <form action="{% url 'search' %}">
                     <!-- Form Row 2 -->
                     <div class="form-row">
                         <div class="col-md-6 mb-3">
                             <select id="type" name="type" class="form-control">
                                 <option selected="true" disabled="disabled">Type</option>
-                                <option value='1'>
+                                <option value='moto'>
                                     Motorcycle
                                 </option>
-                                <option value='2'>
+                                <option value='car'>
                                     Car
                                 </option>
                             </select>
                         </div>
                         <div class="col-md-6 mb-3">
                             <label class="sr-only">Make</label>
-                            <select id="allmakes" name="make" class="form-control">
+                            <select id="choices" name="make" class="form-control">
                                 <option selected="true" disabled="disabled">Make</option>
                                 <!--Get choices from view-->
                                 {% for key,value in car_make_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option data-tag='2' value="{{ key }}" {% if key == values.make %} selected {% endif %}>
+                                <option data-tag='car' value="{{ key }}" {% if key == values.make %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
                                 {% for key,value in moto_make_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option data-tag='1' value="{{ key }}" {% if key == values.make %} selected {% endif %}>
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.make %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
@@ -60,21 +62,15 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-secondary btn-block mt-4" type="submit">More Motorcycle
-                                Options</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button class="btn btn-secondary btn-block mt-4" type="submit">More Car Options</button>
-                        </div>
                     </div>
-                    <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
-                </form>
             </div>
-
-            <!--Carousel-->
-            {% include 'partials/_carousel.html'%}
+            <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
+            </form>
         </div>
+
+        <!--Carousel-->
+        {% include 'partials/_carousel.html'%}
+    </div>
     </div>
 </section>
 
