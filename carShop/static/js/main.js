@@ -30,6 +30,7 @@ $(document).ready(function () {
     });
 });
 
+//Show choices depending on type in a form
 $('#type').on('change', function () {
     var selected = $(this).val();
     $("#choices option").each(function (item) {
@@ -40,7 +41,20 @@ $('#type').on('change', function () {
             element.show();
         }
     });
-
-    $("#choices").val($("#choices option:visible:first").val());
-
+    $("#choices input").each(function (item) {
+        var element = $(this);
+        if (element.data("tag") != selected) {
+            element.hide();
+        } else {
+            element.show();
+        }
+    });
+    $("#choices select").each(function (item) {
+        var element = $(this);
+        if (element.data("tag") != selected) {
+            element.hide();
+        } else {
+            element.show();
+        }
+    });
 });

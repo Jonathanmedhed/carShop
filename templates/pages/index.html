@@ -6,11 +6,13 @@
 <!-- Listings -->
 <section id="showcase" class="showcase-search text-white py-3">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <h1 class="display-4 mb-4">
+        <div class="home-search p-5">
+            <div class="overlay p-5">
+                <h1 class="display-4 mb-4 text-center">
                     Find The Perfect Vehicle For You!
                 </h1>
+                <!--Alerts-->
+                {% include 'partials/_alerts.html' %}
                 <form action="{% url 'search' %}">
                     <!-- Form Row 2 -->
                     <div class="form-row">
@@ -63,45 +65,67 @@
                             </select>
                         </div>
                     </div>
+                    <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
             </div>
-            <button class="btn btn-secondary btn-block mt-4" type="submit">Search</button>
             </form>
         </div>
 
         <!--Carousel-->
         {% include 'partials/_carousel.html'%}
     </div>
-    </div>
 </section>
-
-<section id="services" class="bg-secondary text-white py-5">
+<section id="services" class="bg-secondary py-5">
     <div class="container">
         <div class="row text-center">
-            <div class="col-md-4">
-                <i class="fas fa-certificate fa-4x mr-4"></i>
-                <hr>
-                <h3>Vehicle Appraisal</h3>
-                <p>Our experts and Technicians will have a extensive look at a vehicle to determine
-                    the appropriate market value of it
-                </p>
+            <div class="card-transparent text-center col-md-4">
+                <div class="card-body">
+                    <img src="{% static '/img/appraisal.jpeg' %}" class="card-img-top" alt="...">
+                    <h3 class="card-title mt-1 text-white">Vehicle Appraisal</h3>
+                    <p class="card-text text-white">Our experts and Technicians will have a extensive look at a vehicle to
+                        determine
+                        the appropriate market value of it</p>
+                    {% if user.is_authenticated %}
+                    <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#inquiryModal">Get
+                        Appraisal</button>
+                    {% else %}
+                    <button class="btn-primary btn-block btn-lg">Login to
+                        Contact Us</button>
+                    {% endif %}
+                </div>
             </div>
-            <div class="col-md-4">
-                <i class="fas fa-home fa-4x mr-4"></i>
-                <hr>
-                <h3>Dealerships</h3>
-                <p>Are you a car dealer? here at Car Shop we can work hand in hand to increase
-                    your sales. Contact us to find more about our deals.
-                </p>
+            <div class="card-transparent text-center col-md-4">
+                <div class="card-body">
+                    <img src="{% static '/img/dealer.jpg' %}" class="card-img-top" alt="...">
+                    <h3 class="card-title mt-1 text-white">Dealerships</h3>
+                    <p class="card-text text-white">Here at Car Shop we can work hand in hand to increase
+                        your sales. Contact us to find more about our deals.</p>
+                    {% if user.is_authenticated %}
+                    <button class="btn-primary btn-block btn-lg" data-toggle="modal"
+                        data-target="#dealerInquiryModal">Contact Us</button>
+                    {% else %}
+                    <button class="btn-primary btn-block btn-lg">Login to
+                        Contact Us</button>
+                    {% endif %}
+                </div>
             </div>
-            <div class="col-md-4">
-                <i class="fas fa-suitcase fa-4x mr-4"></i>
-                <hr>
-                <h3>Join the team!</h3>
-                <p>Passionate about motorized vehicles? Here at Car Shop we are always looking
-                    for experts that would help us become the number 1 car dealer website in Ireland
-                </p>
+            <div class="card-transparent text-center col-md-4">
+                <div class="card-body">
+                    <img src="{% static '/img/join.jpg' %}" class="card-img-top" alt="...">
+                    <h3 class="card-title mt-1 text-white">Join the team!</h3>
+                    <p class="card-text text-white">Here at Car Shop we are always looking
+                        for experts that would help us become the number 1 car dealer website in Ireland</p>
+                    {% if user.is_authenticated %}
+                    <button class="btn-primary btn-block btn-lg" data-toggle="modal" data-target="#cvInquiryModal">Send CV</button>
+                    {% else %}
+                    <button class="btn-primary btn-block btn-lg">Login to
+                        Contact Us</button>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>
 </section>
+{% include 'partials/_cv-enquiry.html' %}
+{% include 'partials/_apraisal-enquiry.html' %}
+{% include 'partials/_dealer-enquiry.html' %}
 {% endblock %}

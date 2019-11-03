@@ -1,39 +1,78 @@
-{% extends 'base.html' %}
-
-{% load static %}
-
-{% block content %}
-<section id="moto-showcase" class="showcase-search text-white py-5">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-12">
-                <form action="{% url 'moto' %}" method="POST" enctype="multipart/form-data">
+<div class="modal fade" id="inquiryModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="inquiryModalLabel">Vehicle Appraisal </h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="{% url 'appraisalinquiry' %}" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     <!-- Form Row 2 -->
-                    {% if user.is_authenticated %}
                     <input type="hidden" name="user_id" value="{{ user.id }}">
                     <div class="form-row">
-                        <div class="col-md-6 mb-3">
-                            <label class="sr-only">Make</label>
-                            <select name="make" class="form-control">
-                                <option selected="true" disabled="disabled">Make</option>
+                        <div class="col-md-3 mb-3">
+                            <select id="type" name="type" class="form-control">
+                                <option selected="true" disabled="disabled">Type</option>
+                                <option value='moto' {% if values.type == 'moto' %} selected {% endif %}>
+                                    Motorcycle
+                                </option>
+                                <option value='car' {% if values.type == 'car' %} selected {% endif %}>
+                                    Car
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <select id="choices" name="body" class="form-control">
+                                <option selected="true" disabled="disabled">Body Type</option>
                                 <!--Get choices from view-->
-                                {% for key,value in moto_make_choices.items %}
+                                {% for key,value in body_types.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.make %} selected {% endif %}>{{ value }}
+                                <option data-tag='car' value="{{ key }}" {% if key == values.body %} selected
+                                    {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                                {% for key,value in moto_body_types.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.body %} selected
+                                    {% endif %}>
+                                    {{ value }}
                                 </option>
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
+                            <select id="choices" name="make" class="form-control">
+                                <option selected="true" disabled="disabled">Make</option>
+                                <!--Get choices from view-->
+                                {% for key,value in car_make_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='car' value="{{ key }}" {% if key == values.make %} selected
+                                    {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                                {% for key,value in moto_make_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.make %} selected
+                                    {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
                             <label class="sr-only">Model</label>
                             <input name="model" class="form-control" placeholder="Model">
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label class="sr-only">CC</label>
                             <input name="cc" class="form-control" placeholder="CC">
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="year" class="form-control">
                                 <option selected="true" disabled="disabled">Year</option>
                                 <!--Get choices from view-->
@@ -45,7 +84,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="price" class="form-control">
                                 <option selected="true" disabled="disabled">Price</option>
                                 <!--Get choices from view-->
@@ -57,18 +96,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <select name="body" class="form-control">
-                                <option selected="true" disabled="disabled">Body</option>
-                                <!--Get choices from view-->
-                                {% for key,value in moto_body_types.items %}
-                                <!--If make is in the values searched, stay selected-->
-                                <option value="{{ key }}" {% if key == values.body %} selected {% endif %}>{{ value }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="colour" class="form-control">
                                 <option selected="true" disabled="disabled">Colour</option>
                                 <!--Get choices from view-->
@@ -79,7 +107,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="millage" class="form-control">
                                 <option selected="true" disabled="disabled">Millage</option>
                                 <!--Get choices from view-->
@@ -91,7 +119,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="city" class="form-control">
                                 <option selected="true" disabled="disabled">City</option>
                                 <!--Get choices from view-->
@@ -105,48 +133,46 @@
                         <div class="col-md-12 mb-3">
                             <textarea name="description" class="form-control">Description: </textarea>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="custom-file">
                                 <input name="photo_front" type="file" class="custom-file-input" id="customFile">
                                 <label class="custom-file-label" for="customFile">Front Picture</label>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="custom-file">
                                 <input name="photo_back" type="file" class="custom-file-input" id="customFile">
                                 <label class="custom-file-label" for="customFile">Back Picture</label>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="custom-file">
                                 <input name="photo_left" type="file" class="custom-file-input" id="customFile">
                                 <label class="custom-file-label" for="customFile">Left Picture</label>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="custom-file">
                                 <input name="photo_right" type="file" class="custom-file-input" id="customFile">
                                 <label class="custom-file-label" for="customFile">Right Picture</label>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="custom-file">
                                 <input name="photo_extra" type="file" class="custom-file-input" id="customFile">
-                                <label class="custom-file-label" for="customFile">Extra Picture(Optional)</label>
+                                <label class="custom-file-label" for="customFile">Extra Pic(Optional)</label>
                             </div>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-4 mb-3">
                             <div class="custom-file">
                                 <input name="photo_extra2" type="file" class="custom-file-input" id="customFile">
-                                <label class="custom-file-label" for="customFile">Extra Picture(Optional)</label>
+                                <label class="custom-file-label" for="customFile">Extra Pic(Optional)</label>
                             </div>
                         </div>
                     </div>
                     <input type="submit" value="Submit" class="btn btn-block btn-secondary">
-                    {% endif %}
                 </form>
             </div>
         </div>
     </div>
-</section>
-{% endblock %}
+</div>

@@ -19,6 +19,55 @@ img {
   margin-right: 0.4rem;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+#description {
+  display: flex;
+  justify-content: center;
+}
+
+.card-img-top {
+  max-height: 200px;
+}
+
+#user-card {
+  background-color:  rgba(32, 134, 107, 0.8);
+}
+
+.table {
+  background-color:  rgba(32, 134, 107, 0.8);
+}
+
+.table thead {
+  background-color:  #10284e;
+}
+
+.list-group-item {
+  background-color:  rgba(32, 134, 107, 0.8);
+}
+
+#listing {
+  background: url(../img/garage.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  min-height: 450px;
+  color: #fff;
+  padding-top: 6rem;
+}
+
+#gray-back {
+  background-color:  rgba(51, 51, 51, 0.8);
+  text-align: center;
+}
+#showcase-dashboard {
+  background: url(../img/garage.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  min-height: 450px;
+  color: #fff;
+  padding-top: 6rem;
+}
 
 #showcase {
   background: url(../img/showcase.jpg) no-repeat top center fixed/cover;
@@ -29,7 +78,7 @@ img {
 }
 
 #showcase .home-search {
-  min-height: 400px;
+  min-height: 350px;
   position: relative;
   border-radius: 5px;
 }
@@ -39,9 +88,7 @@ img {
   position: absolute;
   top: 0;
   left: 0;
-  min-height: 400px;
   width: 100%;
-  background: rgba(51, 51, 51, 0.8);
 }
 
 #showcase-inner {
@@ -104,10 +151,26 @@ img {
   }
 }
 
+#form-showcase {
+  background: url(../img/form.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  min-height: 450px;
+  color: #fff;
+  padding-top: 6rem;
+}
+
+#search-showcase {
+  background: url(../img/search.jpg) no-repeat top center fixed/cover;
+  position: relative;
+  min-height: 450px;
+  color: #fff;
+  padding-top: 6rem;
+}
+
 #moto-showcase {
   background: url(../img/moto1.jpg) no-repeat top center fixed/cover;
   position: relative;
-  min-height: 650px;
+  min-height: 450px;
   color: #fff;
   padding-top: 6rem;
 }
@@ -301,6 +364,8 @@ img {
   overflow: hidden;
 }
 
+
+
 #search-results-car::before {
   content: '';
   position: absolute;
@@ -325,6 +390,7 @@ img {
   min-height: 100%;
   width: 100%;
 }
+
 #work {
   padding: 6rem 0;
 }
@@ -354,4 +420,3 @@ img {
   position: absolute;
   bottom: 0px;
 }
-

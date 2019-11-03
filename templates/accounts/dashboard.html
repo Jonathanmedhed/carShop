@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
 {% block content %}
-<section id="dashboard" class="py-4">
+<section id="showcase-dashboard" class="showcase-dashboard py-4">
+    <!--Alerts-->
+    {% include 'partials/_alerts.html' %}
     <div class="container">
+        <h2 id="gray-back">Welcome {{ user.username }}</h2>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 {% if user.is_authenticated %}
-                <h2>Welcome {{ user.username }}</h2>
-                <p>Here are the vehicles you have for sale</p>
-                {% if listings %}
+                <p id="gray-back">Vehicles you have for sale</p>
+
                 <table class="table">
                     <thead>
                         <tr>
@@ -17,6 +19,7 @@
                         </tr>
                     </thead>
                     <tbody>
+                        {% if listings %}
                         {% for listing in listings %}
                         {% if listing.user == user %}
                         <tr>
@@ -28,9 +31,50 @@
                         </tr>
                         {% endif %}
                         {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td>You don't have any vehicles for sale</td>
+                        </tr>
+                        {% endif %}
                     </tbody>
                 </table>
+                <!--Pagination-->
+                {% include 'partials/_listing-pagination.html'%}
                 {% endif %}
+            </div>
+            <div class="col-md-6">
+                {% if user.is_authenticated %}
+                <p id="gray-back">Vehicles you have inquired about</p>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Vehicle</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if inquiries %}
+                        {% for inquiry in inquiries %}
+                        {% if inquiry.user == user %}
+                        <tr>
+                            <td>{{inquiry.id}}</td>
+                            <td>{{inquiry.listing.make}} {{inquiry.listing.model}}</td>
+                            <td>
+                                <a class="btn btn-light" href="{% url 'listing' inquiry.listing.id %}">View Listing</a>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td>You haven't made any inquiries</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+                <!--Pagination-->
+                {% include 'partials/_inquiry-pagination.html'%}
                 {% endif %}
             </div>
         </div>

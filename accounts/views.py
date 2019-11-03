@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from listings.models import Listing
+from inquiries.models import Inquiry
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 
 
 def login(request):
@@ -12,10 +14,10 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            #messages.success(request, 'You are now logged int')
+            messages.success(request, 'You are now logged int')
             return redirect('dashboard')
         else:
-            #messages.error(request, 'Invalid Credentials')
+            messages.error(request, 'Username or Password invalid')
             return redirect('login')
     else:
         return render(request, 'accounts/login.html')
@@ -34,11 +36,11 @@ def register(request):
         if password == password2:
             # Check username
             if User.objects.filter(username=username).exists():
-                #messages.error(request, 'That username is already taken')
+                messages.error(request, 'That username is already taken')
                 return redirect('register')
             else:
                 if User.objects.filter(email=email).exists():
-                    #messages.error(request, 'That email is already in use')
+                    messages.error(request, 'That email is already in use')
                     return redirect('register')
                 else:
                     # All good in the hood
@@ -49,10 +51,10 @@ def register(request):
                     #messages.success(request, 'You are now logged in')
                     # return redirect('index')
                     user.save()
-                    #messages.success(request, 'You are now registered')
+                    messages.success(request, 'You are now registered')
                     return redirect('login')
         else:
-            #messages.error(request, 'Passwords do not match')
+            messages.error(request, 'Passwords do not match')
             return redirect('register')
     else:
         context = {
@@ -64,16 +66,31 @@ def register(request):
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        #messages.success(request, 'You are now logged out')
+        messages.success(request, 'You are now logged out')
         return redirect('index')
 
 
 def dashboard(request):
+    
+    user = request.user
 
-    listings = Listing.objects.order_by('-list_date')
+    listings = Listing.objects.order_by('-list_date').filter(user = user)
+
+    inquiries = Inquiry.objects.order_by('-date').exclude(listing = None).filter(user = user)
+
+    # Listing pagination
+    paginator = Paginator(listings, 6)  
+    page = request.GET.get('page')      
+    paged_listings = paginator.get_page(page) 
+
+    # Inquiry pagination
+    paginator2 = Paginator(inquiries, 6)  
+    page2 = request.GET.get('page2')      
+    paged_inquiries = paginator2.get_page(page2) 
 
     context = {
-        'listings': listings
+        'listings': paged_listings,
+        'inquiries': paged_inquiries
     }
 
     return render(request, 'accounts/dashboard.html', context)

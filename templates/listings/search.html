@@ -5,45 +5,45 @@
 {% load humanize %}
 
 {% block content %}
-<section id="moto-showcase" class="showcase-search text-white py-3">
+<section id="search-showcase" class="showcase-search text-white py-3">
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
                 <form action="{% url 'search' %}">
                     <!-- Form Row 2 -->
                     <div class="form-row">
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select id="type" name="type" class="form-control">
                                 <option selected="true" disabled="disabled">Type</option>
-                                <option value='moto' {% if values.type == 'moto' %} selected
-                                {% endif %}>
+                                <option value='moto' {% if values.type == 'moto' %} selected {% endif %}>
                                     Motorcycle
                                 </option>
-                                <option value='car' {% if values.type == 'car' %} selected
-                                {% endif %}>
+                                <option value='car' {% if values.type == 'car' %} selected {% endif %}>
                                     Car
                                 </option>
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select id="choices" name="body" class="form-control">
                                 <option selected="true" disabled="disabled">Body Type</option>
                                 <!--Get choices from view-->
                                 {% for key,value in body_types.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option data-tag='car' value="{{ key }}" {% if key == values.body %} selected {% endif %}>
+                                <option data-tag='car' value="{{ key }}" {% if key == values.body %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
                                 {% for key,value in moto_body_types.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option data-tag='moto' value="{{ key }}" {% if key == values.body %} selected {% endif %}>
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.body %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="colour" class="form-control">
                                 <option selected="true" disabled="disabled">Colour</option>
                                 <!--Get choices from view-->
@@ -54,29 +54,31 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select id="choices" name="make" class="form-control">
                                 <option selected="true" disabled="disabled">Make</option>
                                 <!--Get choices from view-->
                                 {% for key,value in car_make_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option data-tag='car' value="{{ key }}" {% if key == values.make %} selected {% endif %}>
+                                <option data-tag='car' value="{{ key }}" {% if key == values.make %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
                                 {% for key,value in moto_make_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
-                                <option data-tag='moto' value="{{ key }}" {% if key == values.make %} selected {% endif %}>
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.make %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <label class="sr-only">Model</label>
                             <input name="model" class="form-control" placeholder="Model">
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="city" class="form-control">
                                 <option selected="true" disabled="disabled">City</option>
                                 <!--Get choices from view-->
@@ -87,7 +89,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="minyear" class="form-control">
                                 <option selected="true" disabled="disabled">Min Year</option>
                                 <!--Get choices from view-->
@@ -99,7 +101,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="maxyear" class="form-control">
                                 <option selected="true" disabled="disabled">Max Year</option>
                                 <!--Get choices from view-->
@@ -111,33 +113,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
-                            <select id="choices" name="mincc" class="form-control">
-                                <option selected="true" disabled="disabled">Min cc</option>
-                                <!--Get choices from view-->
-                                {% for key,value in cc_choices.items %}
-                                <!--If make is in the values searched, stay selected-->
-                                <option data-tag='moto' value="{{ key }}" {% if key == values.mincc %} selected
-                                    {% endif %}>
-                                    {{ value }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
-                            <select id="choices" name="maxcc" class="form-control">
-                                <option selected="true" disabled="disabled">Max cc</option>
-                                <!--Get choices from view-->
-                                {% for key,value in cc_choices.items %}
-                                <!--If make is in the values searched, stay selected-->
-                                <option data-tag='moto' value="{{ key }}" {% if key == values.maxcc %} selected
-                                    {% endif %}>
-                                    {{ value }}
-                                </option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="minmillage" class="form-control">
                                 <option selected="true" disabled="disabled">Min Millage</option>
                                 <!--Get choices from view-->
@@ -149,7 +125,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="maxmillage" class="form-control">
                                 <option selected="true" disabled="disabled">Max Millage</option>
                                 <!--Get choices from view-->
@@ -161,7 +137,7 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="minprice" class="form-control">
                                 <option selected="true" disabled="disabled">Min Price</option>
                                 <!--Get choices from view-->
@@ -173,13 +149,39 @@
                                 {% endfor %}
                             </select>
                         </div>
-                        <div class="col-md-6 mb-3">
+                        <div class="col-md-3 mb-3">
                             <select name="maxprice" class="form-control">
                                 <option selected="true" disabled="disabled">Max Price</option>
                                 <!--Get choices from view-->
                                 {% for key,value in price_choices.items %}
                                 <!--If make is in the values searched, stay selected-->
                                 <option value="{{ key }}" {% if key == values.maxprice %} selected {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div id='choices' class="col-md-3 mb-3">
+                            <select data-tag='moto' name="mincc" class="form-control">
+                                <option selected="true" disabled="disabled">Min cc</option>
+                                <!--Get choices from view-->
+                                {% for key,value in cc_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option value="{{ key }}" {% if key == values.mincc %} selected
+                                    {% endif %}>
+                                    {{ value }}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div id='choices' class="col-md-3 mb-3">
+                            <select data-tag='moto' name="maxcc" class="form-control">
+                                <option selected="true" disabled="disabled">Max cc</option>
+                                <!--Get choices from view-->
+                                {% for key,value in cc_choices.items %}
+                                <!--If make is in the values searched, stay selected-->
+                                <option data-tag='moto' value="{{ key }}" {% if key == values.maxcc %} selected
+                                    {% endif %}>
                                     {{ value }}
                                 </option>
                                 {% endfor %}
@@ -195,6 +197,8 @@
     </div>
 </section>
 <section id="search-results-car" class="py-5 bg-secondary text-white">
+    <!--Pagination-->
+    {% include 'partials/_listing-pagination.html'%}
     <!-- Listings -->
     <section id="listings" class="py-4">
         <div class="container">
@@ -204,58 +208,48 @@
                 <!-- Listing -->
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card listing-preview">
-                        <img class="card-img-top" src="{{ listing.photo_front.url }}" alt="">
-                        <div class="card-img-overlay">
-                            <h2>
-                                <span class="badge badge-secondary text-white">€{{ listing.price | intcomma}}</span>
-                            </h2>
-                        </div>
+                        <a href="{% url 'listing' listing.id %}">
+                            <img class="card-img-top" src="{{ listing.photo_front.url }}" alt="">
+                            <div class="card-img-overlay">
+                                <h2>
+                                    <span class="badge badge-secondary text-white">€{{ listing.price | intcomma}}</span>
+                                </h2>
+
+                            </div>
+                        </a>
                         <div class="card-body">
                             <div class="listing-heading text-center">
-                                <h4 class="text-primary">{{ listing.make }} {{ listing.model }}</h4>
-                                <p>
-                                    <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }}</p>
+                                <a href="{% url 'listing' listing.id %}">
+                                    <h4 class="text-primary">{{ listing.make }} {{ listing.model }}</h4>
+                                </a>
+                                <div class="text-secondary"><i class="fas fa-map-marker text-secondary"></i>
+                                    {{ listing.city }}</div>
                             </div>
                             <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-tag"></i> Make: {{ listing.make }}</div>
-                                <div class="col-6">
-                                    <i class="fas fa-car"></i> Model: {{ listing.model }}</div>
-                            </div>
                             <div class="row py-2 text-secondary">
                                 <div class="col-6">
                                     <i class="fas fa-calendar"></i> Year: {{ listing.year }}</div>
                                 <div class="col-6">
-                                    <i class="fas fa-male"></i> Body Type: {{ listing.body }}</div>
-                            </div>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-6">
-                                    <i class="fas fa-paint-brush"></i> Colour: {{ listing.colour }}</div>
-                                <div class="col-6">
                                     <i class="fas fa-hourglass-half"></i> Millage: {{ listing.millage }}</div>
                             </div>
                             <hr>
-                            <div class="row py-2 text-secondary">
-                                <div class="col-12">
-                                    <i class="fas fa-user"></i> {{ listing.user }}</div>
-                            </div>
                             <div class="row text-secondary pb-2">
-                                <div class="col-6">
-                                    <i class="fas fa-clock"></i> {{ listing.list_date | timesince }}</div>
+                                <div class="col-12">
+                                    <i class="fas fa-clock"></i> {{ listing.list_date | timesince }} ago</div>
                             </div>
                             <hr>
-                            <a href="" class="btn btn-primary btn-block">More Info</a>
+                            <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-                {% else %}
-                <h1>No Listing found with those specs</h1>
-                {% endif %}
             </div>
-        </div>
+            {% else %}
+            <h1>No Listing found with those specs</h1>
+            {% endif %}
         </div>
     </section>
+    <!--Pagination-->
+    {% include 'partials/_listing-pagination.html'%}
 </section>
 {% endblock %}
