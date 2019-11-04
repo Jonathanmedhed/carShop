@@ -42,7 +42,7 @@
                                     {{ value }}
                                 </option>
                                 {% endfor %}
-                            </select>
+                            </select required>
                         </div>
                         <div class="col-md-3 mb-3">
                             <select id="choices" name="make" class="form-control">
@@ -62,11 +62,11 @@
                                     {{ value }}
                                 </option>
                                 {% endfor %}
-                            </select>
+                            </select required>
                         </div>
                         <div class="col-md-3 mb-3">
                             <label class="sr-only">Model</label>
-                            <input name="model" class="form-control" placeholder="Model">
+                            <input name="model" class="form-control" placeholder="Model" required>
                         </div>
                         <div class="col-md-3 mb-3">
                             <select name="year" class="form-control">
@@ -78,7 +78,7 @@
                                     {{ value }}
                                 </option>
                                 {% endfor %}
-                            </select>
+                            </select required>
                         </div>
                         <div class="col-md-3 mb-3">
                             <select name="price" class="form-control">
@@ -90,7 +90,7 @@
                                     {{ value }}
                                 </option>
                                 {% endfor %}
-                            </select>
+                            </select required>
                         </div>
                         <div class="col-md-3 mb-3">
                             <select name="colour" class="form-control">
@@ -101,7 +101,7 @@
                                 <option value="{{ key }}" {% if key == values.colour %} selected {% endif %}>{{ value }}
                                 </option>
                                 {% endfor %}
-                            </select>
+                            </select required>
                         </div>
                         <div class="col-md-3 mb-3">
                             <select name="millage" class="form-control">
@@ -113,7 +113,7 @@
                                     {{ value }}
                                 </option>
                                 {% endfor %}
-                            </select>
+                            </select required>
                         </div>
                         <div class="col-md-3 mb-3">
                             <select name="city" class="form-control">
@@ -124,7 +124,7 @@
                                 <option value="{{ key }}" {% if key == values.city %} selected {% endif %}>{{ value }}
                                 </option>
                                 {% endfor %}
-                            </select>
+                            </select required>
                         </div>
                         <div id="choices" class="col-md-3 mb-3">
                             <label class="sr-only">CC</label>
@@ -136,25 +136,25 @@
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="custom-file">
-                                <input name="photo_front" type="file" class="custom-file-input" id="customFile">
+                                <input name="photo_front" type="file" class="custom-file-input" id="customFile" required>
                                 <label class="custom-file-label" for="customFile">Front Picture</label>
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="custom-file">
-                                <input name="photo_back" type="file" class="custom-file-input" id="customFile">
+                                <input name="photo_back" type="file" class="custom-file-input" id="customFile" required>
                                 <label class="custom-file-label" for="customFile">Back Picture</label>
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="custom-file">
-                                <input name="photo_left" type="file" class="custom-file-input" id="customFile">
+                                <input name="photo_left" type="file" class="custom-file-input" id="customFile" required>
                                 <label class="custom-file-label" for="customFile">Left Picture</label>
                             </div>
                         </div>
                         <div class="col-md-4 mb-3">
                             <div class="custom-file">
-                                <input name="photo_right" type="file" class="custom-file-input" id="customFile">
+                                <input name="photo_right" type="file" class="custom-file-input" id="customFile" required>
                                 <label class="custom-file-label" for="customFile">Right Picture</label>
                             </div>
                         </div>

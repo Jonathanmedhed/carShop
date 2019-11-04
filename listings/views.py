@@ -28,39 +28,106 @@ def listing(request, listing_id):
 def listing_form(request):
     if request.method == 'POST':
         fs = FileSystemStorage()
-        # Get form values
-        user_id = request.POST['user_id']
-        make = request.POST['make']
-        model = request.POST['model']
-        year = request.POST['year']
-        cc = request.POST['cc']
-        body = request.POST['body']
-        colour = request.POST['colour']
-        price = request.POST['price']
-        millage = request.POST['millage']
-        city = request.POST['city']
-        description = request.POST['description']
-        photo_front = request.FILES['photo_front']
-        photo_front_name = fs.save(photo_front.name, photo_front)
-        photo_back = request.FILES['photo_back']
-        photo_back_name = fs.save(photo_back.name, photo_back)
-        photo_left = request.FILES['photo_left']
-        photo_left_name = fs.save(photo_left.name, photo_left)
-        photo_right = request.FILES['photo_right']
-        photo_right_name = fs.save(photo_right.name, photo_right)
-        photo_extra = request.FILES.get('photo_extra')
-        if photo_extra is not None:
-            photo_extra_name = fs.save(photo_extra.name, photo_extra)
-        photo_extra2 = request.FILES.get('photo_extra2')
-        if photo_extra2 is not None:
-            photo_extra2_name = fs.save(photo_extra2.name, photo_extra2)
-
-        listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
-                          millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
-                          photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, photo_extra2=photo_extra2_name)
-        listing.save()
-        messages.success(request, 'Listing Published!')
-        return redirect('dashboard')
+        if request.POST['cc']:
+            # Get form values
+            user_id = request.POST['user_id']
+            make = request.POST['make']
+            model = request.POST['model']
+            year = request.POST['year']
+            cc = request.POST['cc']
+            body = request.POST['body']
+            colour = request.POST['colour']
+            price = request.POST['price']
+            millage = request.POST['millage']
+            city = request.POST['city']
+            description = request.POST['description']
+            photo_front = request.FILES['photo_front']
+            photo_front_name = fs.save(photo_front.name, photo_front)
+            photo_back = request.FILES['photo_back']
+            photo_back_name = fs.save(photo_back.name, photo_back)
+            photo_left = request.FILES['photo_left']
+            photo_left_name = fs.save(photo_left.name, photo_left)
+            photo_right = request.FILES['photo_right']
+            photo_right_name = fs.save(photo_right.name, photo_right)
+            photo_extra = request.FILES.get('photo_extra')
+            photo_extra2 = request.FILES.get('photo_extra2')
+            if photo_extra is not None and photo_extra2 is not None:
+                photo_extra_name = fs.save(photo_extra.name, photo_extra)
+                photo_extra2_name = fs.save(photo_extra2.name, photo_extra2)
+                listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
+                                millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                                photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, photo_extra2=photo_extra2_name, is_published=False)
+                listing.save()
+                return redirect('dashboard')
+            elif photo_extra is not None and photo_extra2 is None:
+                photo_extra_name = fs.save(photo_extra.name, photo_extra)
+                listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
+                                millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                                photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, is_published=False)
+                listing.save()
+                return redirect('dashboard')
+            elif photo_extra2 is not None and photo_extra is None:
+                photo_extra_name = fs.save(photo_extra.name, photo_extra)
+                listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
+                                millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                                photo_left=photo_left_name, photo_right=photo_right_name, photo_extra2=photo_extra2_name, is_published=False)
+                listing.save()
+                return redirect('dashboard')
+            else:
+                listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
+                                millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                                photo_left=photo_left_name, photo_right=photo_right_name, is_published=False)
+                listing.save()
+                return redirect('dashboard')
+        else:
+            user_id = request.POST['user_id']
+            make = request.POST['make']
+            model = request.POST['model']
+            year = request.POST['year']
+            body = request.POST['body']
+            colour = request.POST['colour']
+            price = request.POST['price']
+            millage = request.POST['millage']
+            city = request.POST['city']
+            description = request.POST['description']
+            photo_front = request.FILES['photo_front']
+            photo_front_name = fs.save(photo_front.name, photo_front)
+            photo_back = request.FILES['photo_back']
+            photo_back_name = fs.save(photo_back.name, photo_back)
+            photo_left = request.FILES['photo_left']
+            photo_left_name = fs.save(photo_left.name, photo_left)
+            photo_right = request.FILES['photo_right']
+            photo_right_name = fs.save(photo_right.name, photo_right)
+            photo_extra = request.FILES.get('photo_extra')
+            photo_extra2 = request.FILES.get('photo_extra2')
+            if photo_extra is not None and photo_extra2 is not None:
+                photo_extra_name = fs.save(photo_extra.name, photo_extra)
+                photo_extra2_name = fs.save(photo_extra2.name, photo_extra2)
+                listing = Listing(user_id=user_id, make=make, model=model, year=year, body=body, colour=colour, price=price,
+                                millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                                photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, photo_extra2=photo_extra2_name, is_published=False)
+                listing.save()
+                return redirect('dashboard')
+            elif photo_extra is not None and photo_extra2 is None:
+                photo_extra_name = fs.save(photo_extra.name, photo_extra)
+                listing = Listing(user_id=user_id, make=make, model=model, year=year, body=body, colour=colour, price=price,
+                                millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                                photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, is_published=False)
+                listing.save()
+                return redirect('dashboard')
+            elif photo_extra2 is not None and photo_extra is None:
+                photo_extra_name = fs.save(photo_extra.name, photo_extra)
+                listing = Listing(user_id=user_id, make=make, model=model, year=year, body=body, colour=colour, price=price,
+                                millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                                photo_left=photo_left_name, photo_right=photo_right_name, photo_extra2=photo_extra2_name, is_published=False)
+                listing.save()
+                return redirect('dashboard')
+            else:
+                listing = Listing(user_id=user_id, make=make, model=model, year=year, body=body, colour=colour, price=price,
+                                millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                                photo_left=photo_left_name, photo_right=photo_right_name, is_published=False)
+                listing.save()
+                return redirect('dashboard')
     else:
         listings = Listing.objects.all()
     context = {

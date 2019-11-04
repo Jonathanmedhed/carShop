@@ -52,20 +52,18 @@ def cvinquiry(request):
         fs = FileSystemStorage()
         message = request.POST['message']
         user_id = request.POST['user_id']
-        file = request.FILES['file']
+        file = request.FILES.get('file')
         file_name = fs.save(file.name, file)
         file2 = request.FILES.get('file2')
         if file2 is not None:
             file2_name = fs.save(file2.name, file2)
-
-       # Check if user has made a inquiry already
-        if request.user.is_authenticated:
-            user_id = request.user.id
-
-        inquiry = Inquiry(message=message, user_id=user_id,
-                          file=file_name, file2=file2)
-
-        inquiry.save()
+            inquiry = Inquiry(message=message, user_id=user_id,
+                              file=file_name, file2=file2_name)
+            inquiry.save()
+        else:
+            inquiry = Inquiry(message=message, user_id=user_id,
+                              file=file_name)
+            inquiry.save()
 
         # Send Mail
         '''
@@ -96,15 +94,13 @@ def dealerinquiry(request):
         file = request.FILES.get('file')
         if file is not None:
             file_name = fs.save(file.name, file)
+            inquiry = Inquiry(message=message, user_id=user_id,
+                              file=file_name)
+            inquiry.save()
+        else:
+            inquiry = Inquiry(message=message, user_id=user_id)
 
-       # Check if user has made a inquiry already
-        if request.user.is_authenticated:
-            user_id = request.user.id
-
-        inquiry = Inquiry(message=message, user_id=user_id,
-                          file=file_name)
-
-        inquiry.save()
+            inquiry.save()
 
         # Send Mail
         '''
@@ -150,17 +146,30 @@ def appraisalinquiry(request):
         photo_right = request.FILES['photo_right']
         photo_right_name = fs.save(photo_right.name, photo_right)
         photo_extra = request.FILES.get('photo_extra')
-        if photo_extra is not None:
-            photo_extra_name = fs.save(photo_extra.name, photo_extra)
         photo_extra2 = request.FILES.get('photo_extra2')
-        if photo_extra2 is not None:
+        if photo_extra is not None and photo_extra2 is not None:
+            photo_extra_name = fs.save(photo_extra.name, photo_extra)
             photo_extra2_name = fs.save(photo_extra2.name, photo_extra2)
+            listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
+                              millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                              photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, photo_extra2=photo_extra2_name, is_published=False)
+            listing.save()
+            return redirect('/')
+        elif photo_extra is not None and photo_extra2 is None:
+            photo_extra_name = fs.save(photo_extra.name, photo_extra)
+            listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
+                              millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                              photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, is_published=False)
+            listing.save()
+            return redirect('/')
+        elif photo_extra2 is not None and photo_extra is None:
+            photo_extra_name = fs.save(photo_extra.name, photo_extra)
+            listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
+                              millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
+                              photo_left=photo_left_name, photo_right=photo_right_name, photo_extra2=photo_extra2_name, is_published=False)
+            listing.save()
+            return redirect('/')
 
-        listing = Listing(user_id=user_id, make=make, model=model, cc=cc, year=year, body=body, colour=colour, price=price,
-                          millage=millage, city=city, description=description, photo_front=photo_front_name, photo_back=photo_back_name,
-                          photo_left=photo_left_name, photo_right=photo_right_name, photo_extra=photo_extra_name, photo_extra2=photo_extra2_name, is_published=False)
-        listing.save()
-        return redirect('/')
     else:
         listings = Listing.objects.all()
     context = {
